@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Кулинарный журнал — Список покупок</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #FFF8F0; padding: 16px; }
+    
+    .top-bar { max-width: 600px; margin: 0 auto 16px; }
+    .back-btn { text-decoration: none; color: #E86A33; font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 6px; padding: 8px 0; }
+
+    .container {
+      max-width: 600px; margin: 0 auto; background: #fff; border-radius: 14px;
+      padding: 24px; border: 1px solid #E0D5C8; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    h1 { color: #3A2A1A; margin-bottom: 20px; font-size: 22px; text-align: center; }
+    
+    .shopping-list { list-style: none; }
+    .shopping-list li {
+      display: flex; align-items: center; gap: 12px; padding: 14px 0;
+      border-bottom: 1px solid #F5E6D3; font-size: 16px; color: #5A4A3A;
+    }
+    .shopping-list li:last-child { border-bottom: none; }
+    
+    .shopping-list input[type="checkbox"] {
+      width: 20px; height: 20px; accent-color: #E86A33; cursor: pointer;
+    }
+    .shopping-list li.completed span { text-decoration: line-through; color: #999; }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="index.html" class="back-btn">← На главную</a>
+  </div>
+
+  <div class="container">
+    <h1>🛒 Список покупок</h1>
+    <ul class="shopping-list">
+      <li><input type="checkbox" checked> <span class="completed">Спагетти — 200 г</span></li>
+      <li><input type="checkbox" checked> <span class="completed">Бекон — 150 г</span></li>
+      <li><input type="checkbox"> <span>Яйца — 2 шт.</span></li>
+      <li><input type="checkbox"> <span>Пармезан — 50 г</span></li>
+      <li><input type="checkbox"> <span>Овсяные хлопья — 100 г</span></li>
+      <li><input type="checkbox"> <span>Свежие ягоды — 150 г</span></li>
+    </ul>
+  </div>
+
+  <script>
+    // Простой скрипт для зачеркивания купленных продуктов
+    document.querySelectorAll('.shopping-list input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          this.nextElementSibling.classList.add('completed');
+        } else {
+          this.nextElementSibling.classList.remove('completed');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
